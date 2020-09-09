@@ -33,7 +33,7 @@ import {
   DispositifCreateModal,
   DemarcheCreateModal,
   DispositifValidateModal,
-  SuggererModal,
+  ReactionModal,
   EnConstructionModal,
   ResponsableModal,
   VarianteCreateModal,
@@ -2002,7 +2002,7 @@ export class Dispositif extends Component {
               />
             </Row>
 
-            <SuggererModal
+            <ReactionModal
               showModals={showModals}
               toggleModal={this.toggleModal}
               onChange={this.handleModalChange}

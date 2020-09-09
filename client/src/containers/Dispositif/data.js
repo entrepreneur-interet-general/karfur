@@ -26,9 +26,7 @@ const lorems = {
 const showModals = {
   reaction: false,
   fiabilite: false,
-  suggerer: false,
-  question: false, //correspond au modal suggerer, mais permet de différencier comment on est arrivés là
-  signaler: false, //correspond au modal suggerer, mais permet de différencier comment on est arrivés là
+  reaction: false,
   merci: false,
   allGood: false,
   construction: false,

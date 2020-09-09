@@ -4,7 +4,7 @@ import DispositifValidateModal from "./DispositifValidateModal/DispositifValidat
 import EnConstructionModal from "./EnConstructionModal/EnConstructionModal";
 import LanguageModal from "./LanguageModal/LanguageModal";
 import MapModal from "./MapModal/MapModal";
-import SuggererModal from "./SuggererModal/SuggererModal";
+import ReactionModal from "./ReactionModal/ReactionModal";
 import ThanksModal from "./ThanksModal/ThanksModal";
 import TranslationModal from "./TranslationModal/TranslationModal";
 import SuggestionModal from "./SuggestionModal/SuggestionModal";
@@ -33,7 +33,7 @@ export {
   EnConstructionModal,
   LanguageModal,
   MapModal,
-  SuggererModal,
+  ReactionModal,
   ThanksModal,
   TranslationModal,
   SuggestionModal,

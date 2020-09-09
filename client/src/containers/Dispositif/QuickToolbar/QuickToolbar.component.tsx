@@ -66,7 +66,7 @@ export class QuickToolbar extends Component<Props, StateType> {
   _onClick = (id: number) => {
     if (this.props.disableEdit) {
       if (id === 0) {
-        this.props.toggleModal(true, "suggerer");
+        this.props.toggleModal(true, "reaction");
       } else if (id === 1) {
         let node = this.props.item;
         if (

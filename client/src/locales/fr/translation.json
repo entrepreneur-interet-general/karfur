@@ -426,7 +426,6 @@
     "En savoir plus": "En savoir plus",
     "Tiennent la page": "Tiennent la page à jour et répondent à vos questions",
     "Évaluer mon niveau": "Évaluer mon niveau",
-    "Nous vous écoutons": "Nous vous écoutons :",
     "Réagir": "Réagir",
     "J'ai une question": "J'ai une question",
     "J'ai une suggestion !": "J'ai une suggestion !",
@@ -457,7 +456,9 @@
     "Dernière mise à jour": "Dernière mise à jour",
     "En bref": "En bref",
     "avec": "avec",
-    "Merci": "Merci !"
+    "Merci": "Merci !",
+    "Envoyer une réaction": "Envoyer une réaction",
+    "Dites nous ce que vous pensez": "Dites nous ce que vous pensez :"
   },
   "CheckDemarche": {
     "Êtes-vous sûr": "Êtes-vous sûr ?",
