@@ -1,0 +1,51 @@
+@import "src/scss/colors.scss";
+
+.modal-suggestion {
+  min-width: 650px;
+
+  .modal-content {
+    background: #f2f2f2;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 30px 40px;
+
+    .modal-header {
+      border: none;
+      padding: 0px;
+      .modal-title {
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 51px;
+      }
+      margin-bottom: 8px;
+    }
+
+    .modal-body {
+      font-size: 18px;
+      line-height: 23px;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: #828282;
+      padding: 0px;
+      textarea {
+        margin-bottom: 80px;
+        height: 370px;
+        background: #fbfbfb;
+      }
+    }
+
+    .modal-footer {
+      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0px;
+    }
+
+    .link-to-page {
+      color: $noir;
+      text-decoration: underline;
+    }
+  }
+}

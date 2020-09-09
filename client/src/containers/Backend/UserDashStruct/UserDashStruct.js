@@ -25,7 +25,7 @@ import EVAIcon from "../../../components/UI/EVAIcon/EVAIcon";
 import {
   AddMemberModal,
   EditMemberModal,
-  SuggestionModal,
+  ReactionLectureModal,
 } from "../../../components/Modals";
 import {
   showSuggestion,
@@ -389,10 +389,11 @@ export class UserDashStruct extends Component {
           initializeStructure={this.initializeStructure}
         />
 
-        <SuggestionModal
+        <ReactionLectureModal
           suggestion={this.state.suggestion}
           show={this.state.showModal.suggestion}
           toggle={() => this.toggleModal("suggestion")}
+          archive={this.archiveSuggestion}
         />
 
         {isMainLoading && (

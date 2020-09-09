@@ -7,7 +7,7 @@ import MapModal from "./MapModal/MapModal";
 import ReactionModal from "./ReactionModal/ReactionModal";
 import ThanksModal from "./ThanksModal/ThanksModal";
 import TranslationModal from "./TranslationModal/TranslationModal";
-import SuggestionModal from "./SuggestionModal/SuggestionModal";
+import ReactionLectureModal from "./ReactionLectureModal/ReactionLectureModal";
 import ObjectifsModal from "./ObjectifsModal/ObjectifsModal";
 import ContributeurModal from "./ContributeurModal/ContributeurModal";
 import TraducteurModal from "./TraducteurModal/TraducteurModal";
@@ -36,7 +36,7 @@ export {
   ReactionModal,
   ThanksModal,
   TranslationModal,
-  SuggestionModal,
+  ReactionLectureModal,
   ObjectifsModal,
   ContributeurModal,
   TraducteurModal,

@@ -33,7 +33,7 @@ import {
 } from "../../../components/Backend/UserProfile";
 import {
   ThanksModal,
-  SuggestionModal,
+  ReactionLectureModal,
   ObjectifsModal,
   TraducteurModal,
   AddMemberModal,
@@ -511,7 +511,12 @@ export class UserProfile extends Component {
     // let nbReactions = contributions.map(dispo => ((dispo.merci || []).length + (dispo.bravo || []).length)).reduce((a,b) => a + b, 0);
     return (
       <div className="animated fadeIn user-profile">
-        <div className={"profile-header" + (this.state.visible ? "" : " profile-header-hidden")}>
+        <div
+          className={
+            "profile-header" +
+            (this.state.visible ? "" : " profile-header-hidden")
+          }
+        >
           <AnchorLink
             href="#mon-profil"
             offset={anchorOffset}
@@ -963,10 +968,11 @@ export class UserProfile extends Component {
           show={this.state.showModal.thanks}
           toggle={() => this.toggleModal("thanks")}
         />
-        <SuggestionModal
+        <ReactionLectureModal
           suggestion={this.state.suggestion}
           show={this.state.showModal.suggestion}
           toggle={() => this.toggleModal("suggestion")}
+          archive={this.archiveSuggestion}
         />
 
         <TraducteurModal

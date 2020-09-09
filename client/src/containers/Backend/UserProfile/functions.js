@@ -1,4 +1,5 @@
 import API from "../../../utils/API";
+import Swal from "sweetalert2";
 
 const showSuggestion = function (suggestion, idx = -1) {
   this.setState((pS) => ({
@@ -28,6 +29,12 @@ const archiveSuggestion = function (suggestion) {
       actions: this.state.actions.filter(
         (x) => x.suggestionId !== suggestion.suggestionId
       ),
+    });
+    Swal.fire({
+      title: "Yay...",
+      text: "La notification a bien été supprimée.",
+      type: "success",
+      timer: 1500,
     });
   });
 };

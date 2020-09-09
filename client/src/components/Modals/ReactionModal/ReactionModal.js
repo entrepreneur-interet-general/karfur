@@ -50,7 +50,7 @@ const suggererModal = (props) => {
           name="question-mark-circle-outline"
           fill={variables.error}
         >
-          {t("J'ai besoin d'aide")}
+          {t("Login.Centre d'aide", "Centre d'aide")}
         </FButton>
         <FButton
           type="validate"
@@ -59,14 +59,6 @@ const suggererModal = (props) => {
         >
           {t("Envoyer", "Envoyer")}
         </FButton>
-
-        {/* <Button
-          color="dark"
-          className="send-btn"
-          onClick={() => props.onValidate(name, fieldName)}
-        >
-          
-        </Button> */}
       </ModalFooter>
     </Modal>
   );
