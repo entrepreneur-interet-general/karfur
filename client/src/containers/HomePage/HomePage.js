@@ -57,7 +57,7 @@ export class HomePage extends Component {
   }
   state = {
     users: [],
-    corona: true,
+    corona: false,
     popup: false,
     overlay: false,
   };
