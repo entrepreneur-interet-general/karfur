@@ -90,7 +90,8 @@ export const membres = [
     name: "Nour Allazkani",
     roleName: "Ambassadeur",
     engagement:
-      "Le projet Réfugiés.info est une opportunité pour mettre le numérique au service d’un public, et non l’inverse. La complexité des situations individuelles doit être étudiée afin de proposer un service correspondant aux usages spécifiques des personnes réfugiés. Impressionné par la vitalité et la détermination du tissu associatif mobilisé pour accueillir les réfugiés, j'espère proposer un outil pour valoriser les nombreuses initiatives présentes dans tous les territoires.",
+      "Le parcours d’intégration est un processus complexe, j’en ai vécu un en tant que réfugiés syrien depuis mon arrivée en France en 2014. L’accès à l’information est primordial pour reconstruire sa nouvelle vie. En tant qu’informaticien, j’ai tenté de proposer un site d’information lors d’une première expérience associative. Cela m’a convaincu de l’importance d’une plateforme nationale qui centralise l’information. Ce qui m’anime c’est de tisser des liens et de provoquer la rencontre autour d’un projet commun d’intérêt général. Je suis attaché à ce que la diversité des points de vues soient prise en compte dans la conception de ce projet collaboratif. Animé et fier de cette opportunité. Avançons ensemble !",
+
     role:
       "Créer, animer et étendre le réseau des partenaires de la plateforme pour la faire connaître et s’assurer qu’elle répond toujours au besoin. Représenter le projet lors d’interventions publiques et faire remonter les besoins à l’équipe de développement. Structurer la recherche de financement et la pérénnisation du projet.",
     outils: "Airtable, Mural, Slack, Drive",
