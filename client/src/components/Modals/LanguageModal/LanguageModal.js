@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { withTranslation } from "react-i18next";
 import { colorAvancement } from "../../Functions/ColorFunctions";
+import { NavHashLink } from "react-router-hash-link";
 
 import "./LanguageModal.scss";
 import FButton from "../../FigmaUI/FButton/FButton";
@@ -64,10 +65,7 @@ const languageModal = (props) => {
                         className="vertical-center"
                       >
                         <b>
-                          {t(
-                            "Homepage.langue indispo",
-                            "Votre langue n’est pas disponible ?"
-                          )}
+                          {t("Homepage.traduire", "Aidez-nous à traduire !")}
                         </b>
                       </Col>
                       <Col
@@ -79,13 +77,12 @@ const languageModal = (props) => {
                         className="button-col"
                       >
                         <FButton
-                          tag={"a"}
-                          href="https://refugies.canny.io/"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          tag={NavHashLink}
+                          to="/comment-contribuer#traduire"
+                          onClick={props.toggle}
                           type="outline"
                         >
-                          {t("Homepage.Demander", "Demander")}
+                          {t("Homepage.Je traduis", "Je traduis")}
                         </FButton>
                       </Col>
                     </Row>
