@@ -72,13 +72,26 @@ const FInput = (props) => {
           props.error ? "error" : "",
         ].join(" ")}
       />
-      <InputGroupAddon
-        addonType="append"
-        className="icon-append"
-        onClick={props.onAppendClick}
-      >
-        <EVAIcon name="alert-triangle" fill="#F44336" />
-      </InputGroupAddon>
+      {props.errorType === "wrongPassword" ? (
+        <InputGroupAddon
+          addonType="append"
+          className="icon-append"
+          onClick={props.onAppendClick}
+        >
+          <EVAIcon
+            name={props.appendName}
+            fill={props.appendFill || variables.noir}
+          />
+        </InputGroupAddon>
+      ) : (
+        <InputGroupAddon
+          addonType="append"
+          className="icon-append"
+          onClick={props.onAppendClick}
+        >
+          <EVAIcon name="alert-triangle" fill="#F44336" />
+        </InputGroupAddon>
+      )}
     </InputGroup>
   );
 };

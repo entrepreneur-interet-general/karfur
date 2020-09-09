@@ -784,6 +784,7 @@ const PasswordField = (props) => (
           autoComplete="new-password"
           error={props.wrongPasswordError}
           errorIcon="lock"
+          errorType="wrongPassword"
           newSize
         />
       </div>
