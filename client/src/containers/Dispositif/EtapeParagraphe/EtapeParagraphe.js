@@ -846,29 +846,6 @@ class EtapeParagraphe extends Component {
                 typeContenu={this.props.typeContenu}
                 {...subitem}
               />
-
-              {disableEdit && (
-                <div className="feedback-wrapper">
-                  <b>
-                    {t(
-                      "Dispositif.izok",
-                      "Est-ce que ça s’est bien passé comme on a dit ?"
-                    )}
-                  </b>
-                  <div className="feedback-btns">
-                    <FButton
-                      type="validate"
-                      className="mr-10"
-                      onClick={this.props.upcoming}
-                    >
-                      {t("Oui", "Oui")}
-                    </FButton>
-                    <FButton type="error" onClick={this.props.upcoming}>
-                      {t("Non", "Non")}
-                    </FButton>
-                  </div>
-                </div>
-              )}
             </Collapse>
             {!disableEdit && (
               <FButton
