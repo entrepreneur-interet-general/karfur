@@ -104,10 +104,7 @@ const actionTable = (props) => {
                   fill={variables.noir}
                 />
               </td>
-              <td
-                className="align-middle pointer fit-content"
-                onClick={() => props.showSuggestion(element)}
-              >
+              <td className="align-middle pointer fit-content">
                 <FButton
                   type="light-action"
                   name="eye-outline"
