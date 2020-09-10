@@ -146,7 +146,9 @@ function login(req, res) {
           logger.error("[Login] incorrect password", {
             username: req.body && req.body.username,
           });
-          res.status(401).json({ text: "Mot de passe incorrect" });
+          res
+            .status(401)
+            .json({ text: "Mot de passe incorrect", data: "no-alert" });
         }
       }
     );
