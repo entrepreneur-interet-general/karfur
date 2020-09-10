@@ -272,6 +272,14 @@ const CorrectionContentContainer = styled.div`
   width: 380px;
 `;
 
+const EcrireAnchor = styled.div`
+  margin-top: 150px;
+`;
+
+const TraduireAnchor = styled.div`
+  margin-top: 50px;
+`;
+
 const DispositifCard = (props) => (
   <DispoCardContainer>
     <DispositifImage />
@@ -489,7 +497,7 @@ class CommentContribuer extends Component {
           </HeaderText>
           <HeaderCardsContainer>
             <div style={{ marginRight: "48px" }}>
-              <AnchorLink offset="60" href="#ecrire">
+              <AnchorLink offset="60" href="#ecrire-card">
                 <HeaderCard
                   title={t("CommentContribuer.écrire", "écrire")}
                   iconName="edit-outline"
@@ -498,7 +506,7 @@ class CommentContribuer extends Component {
               </AnchorLink>
             </div>
             <div style={{ marginRight: "48px" }}>
-              <AnchorLink offset="60" href="#traduire">
+              <AnchorLink offset="60" href="#traduire-card">
                 <HeaderCard
                   title={t("CommentContribuer.traduire", "traduire")}
                   iconName="edit-outline"
@@ -513,8 +521,9 @@ class CommentContribuer extends Component {
               />
             </AnchorLink>
           </HeaderCardsContainer>
+          <EcrireAnchor id="ecrire" />
         </HeaderContainer>
-        <RedactionContainer id="ecrire">
+        <RedactionContainer id="ecrire-card">
           {t("CommentContribuer.Redaction", "Rédiger de nouveaux contenus")}
           <RedactionCardsContainer>
             <NavLink to="/dispositif" className="no-decoration">
@@ -527,8 +536,9 @@ class CommentContribuer extends Component {
             <StructureCard t={t} />
             <LexiqueCard t={t} />
           </RedactionCardsContainer>
+          <TraduireAnchor id="traduire" />
         </RedactionContainer>
-        <TraductionContainer id="traduire">
+        <TraductionContainer id="traduire-card">
           <div style={{ marginLeft: "120px" }}>
             {t(
               "CommentContribuer.Traduction",
