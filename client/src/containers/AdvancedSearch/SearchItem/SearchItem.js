@@ -19,6 +19,7 @@ export class SearchItem extends Component {
     dropdownOpen: false,
     isMounted: false,
     ville: "",
+    test: "",
   };
 
   componentDidMount() {
@@ -26,6 +27,7 @@ export class SearchItem extends Component {
   }
 
   onPlaceSelected(place) {
+    console.log("place", place);
     this.setState({ ville: place.formatted_address });
     this.props.selectParam(this.props.keyValue, place);
   }
@@ -45,7 +47,7 @@ export class SearchItem extends Component {
   render() {
     const { t, item, keyValue } = this.props;
     const { dropdownOpen, isMounted, ville } = this.state;
-
+    console.log("ville", this.state.test);
     return (
       <div className="search-col">
         <span className="mr-10">
@@ -71,7 +73,12 @@ export class SearchItem extends Component {
                   id="ville"
                   value={ville}
                   onChange={this.handleChange}
-                  onPlaceSelected={this.onPlaceSelected}
+                  onPlaceSelected={(place) =>
+                    this.setState({
+                      ville: place.formatted_address,
+                      test: place,
+                    })
+                  }
                   types={["(regions)"]}
                   componentRestrictions={{ country: "fr" }}
                 />
@@ -125,7 +132,12 @@ export class SearchItem extends Component {
               )}
             </DropdownToggle>
             <DropdownMenu>
-              <div className={"options-wrapper" + (item.queryName === "tags.name" ? " query-tags" : "")}>
+              <div
+                className={
+                  "options-wrapper" +
+                  (item.queryName === "tags.name" ? " query-tags" : "")
+                }
+              >
                 {item.children.map((subi, idx) => {
                   return (
                     <FSearchBtn
