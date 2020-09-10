@@ -14,7 +14,7 @@
       height: 300px;
       background-color: $noirCD;
 
-      &.Public-visé-basic {
+      &.Public-visé-noImage {
         background-image: url(../../../assets/figma/InfoCard/Public/infocard_Public.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;
@@ -118,7 +118,7 @@
         background-position: calc(100% - 20px) calc(100% + 25px), center;
       }
 
-      &.Âge-requis-basic {
+      &.Âge-requis-noImage {
         background-image: url(../../../assets/figma/InfoCard/Age_requis/infocard_Age_requis.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;
@@ -222,7 +222,7 @@
         background-position: calc(100% - 20px) calc(100% + 10px), center;
       }
 
-      &.Durée-basic {
+      &.Durée-noImage {
         background-image: url(../../../assets/figma/InfoCard/Duree/infocard_Durée.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;
@@ -326,7 +326,7 @@
         background-position: calc(100% - 30px) calc(100% + 0px), center;
       }
 
-      &.Niveau-de-français-basic {
+      &.Niveau-de-français-noImage {
         background-image: url(../../../assets/figma/InfoCard/Francais/infocard_Français.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;
@@ -430,7 +430,7 @@
         background-position: calc(100% - 30px) calc(100% - 30px), center;
       }
 
-      &.Combien-ça-coûte-basic {
+      &.Combien-ça-coûte-noImage {
         background-image: url(../../../assets/figma/InfoCard/Prix/infocard_Prix.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 70%, cover;
@@ -534,7 +534,7 @@
         background-position: calc(100% - 0px) calc(100% + 0px), center;
       }
 
-      &.Justificatif-demandé-basic {
+      &.Justificatif-demandé-noImage {
         background-image: url(../../../assets/figma/InfoCard/Papiers/infocard_Papiers.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;
@@ -646,7 +646,7 @@
         background-position: calc(100% - 30px) calc(100% + 50px), center;
       }
 
-      &.Important-basic {
+      &.Important-noImage {
         background-image: url(../../../assets/figma/InfoCard/Important/infocard_Important.svg),
           url(../../../assets/figma/InfoCard/background/bg-infocard.svg);
         background-size: 80%, cover;

@@ -482,8 +482,9 @@ export class CardParagraphe extends Component<Props> {
     const computeCardClassName = () => {
       const safeMainTag =
         _.isEmpty(this.props.mainTag) || !this.props.mainTag.short
-          ? "basic"
+          ? "noImage"
           : this.props.mainTag.short.replace(/ /g, "-");
+
       return (
         subitem.title.replace(/ /g, "-").replace("-?", "").replace("-!", "") +
         "-" +
