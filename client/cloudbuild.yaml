@@ -15,7 +15,8 @@ steps:
   args: ["-c", "source build.env && npm run build"]
   dir: 'client'
 # Sync static content with the frontend bucket
-- name: gcr.io/cloud-builders/gsutil
-  args: ["-m", "rsync", "-r", "-c", "-d", "client/build", "${_BUCKET_URL}"]
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: bash
+  args: ["-c", "env"]
   env:
     - 'LANG=fr_FR.UTF-8'
