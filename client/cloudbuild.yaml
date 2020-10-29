@@ -15,8 +15,11 @@ steps:
   args: ["-c", "source build.env && npm run build"]
   dir: 'client'
 # Sync static content with the frontend bucket
-- name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gsutil
   entrypoint: bash
-  args: ["-c", "gsutil -m rsync -r -d client/build ${_BUCKET_URL}"]
+  args: [
+    "-c",
+    "apt-get -y install locales && sed -i 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && locale-gen && gsutil -m rsync -r -d client/build ${_BUCKET_URL}"
+  ]
   env:
     - 'LANG=fr_FR.UTF-8'
