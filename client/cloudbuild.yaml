@@ -1,7 +1,22 @@
 steps:
+# Install necessary npm packages
+- name: 'node:10'
+  entrypoint: npm
+  args: ["install"]
+  dir: 'client'
+# Retrieve secrets
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: bash
+  args: ["-c", "for secret in $(gcloud secrets list --filter=\"labels.environment=${_ENV}\" --filter=\"labels.component=${_COMPONENT}\" --format=\"value(NAME)\"); do echo export $secret=\\\"$(gcloud secrets versions access --secret=$secret latest)\\\" >> build.env; done"]
+  dir: 'client'
+# Generate static resources
+- name: 'node:10'
+  entrypoint: bash
+  args: ["-c", "source build.env && npm run build"]
+  dir: 'client'
 # Sync static content with the frontend bucket
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: bash
-  args: ["-c", "gsutil rsync -r -c -d client/build ${_BUCKET_URL}"]
+  args: ["-c", "gcloud -m rsync -r -d client/build ${_BUCKET_URL}"]
   env:
     - 'LANG=fr_FR.UTF-8'
