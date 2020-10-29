@@ -3,6 +3,6 @@ steps:
 # Sync static content with the frontend bucket
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: bash
-  args: ["-c", "env"]
+  args: ["-c", "locale"]
   env:
     - 'LANG=fr_FR.UTF-8'
