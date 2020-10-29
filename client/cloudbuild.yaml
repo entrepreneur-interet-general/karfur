@@ -2,6 +2,6 @@ steps:
 # Sync static content with the frontend bucket
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: bash
-  args: ["-c", "gsutil rsync -m -r -c -d client/build ${_BUCKET_URL}"]
+  args: ["-c", "gsutil rsync -r -c -d client/build ${_BUCKET_URL}"]
   env:
     - 'LANG=fr_FR.UTF-8'
