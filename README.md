@@ -1,9 +1,6 @@
 # Refugies.info (formerly Karfu'R)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![License: MIT](https://img.shields.io/badge/Programme-Entrepreneurs_d'intérêt_général-blue.svg)](https://entrepreneur-interet-general.etalab.gouv.fr)
-[![License: MIT](https://img.shields.io/badge/Promo-2019-blueviolet.svg)](https://entrepreneur-interet-general.etalab.gouv.fr/defis.html)
-[![License: MIT](https://img.shields.io/badge/Défi-Karfu'R-success.svg)](https://entrepreneur-interet-general.etalab.gouv.fr/defis/2019/karfur.html)
 
 Refugies.info is a project to offer a better experience to refugees in France as per their integration and their administrative process. Refugies.info is a project hosted by the DIAIR (Direction Interministérielle pour l'Accueil et l'Intégration des Réfugiés), a service of the French Ministry of Interior (Ministère de l'Intérieur).
 
@@ -44,12 +41,12 @@ Please note that you need mongo, the server and the client to run concurrently i
 
 ```bash
 # clone the repo
-$ git clone https://github.com/entrepreneur-interet-general/karfur.git
+$ git clone https://github.com/refugies-info/karfur.git
 ```
 
 ### Prepare your secret
 
-Create a `.env` file in the karfur root directory with at least the following lines (values to be changed at your discretion). You can find an example of a complete env configuration in the `example-env-file.env` file.
+Create a `.env` file in the server directory with at least the following lines (values to be changed at your discretion). You can find an example of a complete env configuration in the `example-env-file-server.env` file in the root directory.
 
 ```bash
 PORT = 8000
@@ -59,7 +56,7 @@ SECRET = demo
 FS_URL = http://localhost:8000
 ```
 
-Then, create another `.env` file in the client sub-directory with at least the following line (values to be changed at your discretion). You can find an example of a complete env configuration in the `example-env-file.env` file in the client folder.
+Then, create another `.env` file in the client directory with at least the following line (values to be changed at your discretion). You can find an example of a complete env configuration in the `example-env-file-client.env` file in the client folder.
 
 ```bash
 REACT_APP_GOOGLE_API_KEY = demo
@@ -73,18 +70,18 @@ Launch a mongodb instance
 $ mongod
 ```
 
-Open a new terminal tab and launch the server in the karfur directory
+Open a new terminal tab and launch the server
 
 ```bash
 # go into app's directory
-$ cd karfur
+$ cd karfur/server
 # install app's dependencies
 $ npm install
 # serve at localhost:8000.
-$ npm start
+$ nodemon
 ```
 
-Open a new terminal tab and launch the client in the karfur/client directory
+Open a new terminal tab and launch the client
 
 ```bash
 # go into client's directory
@@ -109,7 +106,7 @@ In the client directory, the following commands are available
 
 2. `npm run build` - builds for production with minification
 
-3. `npm run test` - starts the unit test runner (jest, chai, enzyme, mocha)
+3. `npm run test` - starts the unit test runner (unit, jest, lint)
 
 4. `npm run test-with-coverage` - generates test coverage report (jest) (pending bug fix)
 
@@ -123,26 +120,16 @@ Please read through our [contributing guidelines](https://github.com/entrepreneu
 
 Editor preferences are available in the [editor config](https://github.com/entrepreneur-interet-general/karfur/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
-## Versioning
+## Team
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Refugies.info is maintained under [the Semantic Versioning guidelines](http://semver.org/).
+**Agathe Kieny** developper
 
-See [the Releases section of our project](https://github.com/entrepreneur-interet-general/karfur/releases) for changelogs for each release version.
-
-## Creators
-
-**Soufiane Lamrissi**, web developer
-
-- <https://github.com/Tony4469>
-- <https://www.linkedin.com/in/soufiane-lamrissi-15b79261/>
-- <https://twitter.com/Wriri>
+**Luca Mazzi** developper
 
 **Hugo Stephan**, designer
 
 - <https://hugostephan.com>
 - <https://twitter.com/hugostephan>
-
-## Contributors
 
 **Nour Allazkani**, business developer
 
@@ -151,6 +138,14 @@ See [the Releases section of our project](https://github.com/entrepreneur-intere
 **Chloé Vermeulin**, computer graphics designer
 
 - <https://www.linkedin.com/in/chlo%C3%A9-vermeulin-a3773069>
+
+## Previous team
+
+**Soufiane Lamrissi**, web developer
+
+- <https://github.com/Tony4469>
+- <https://www.linkedin.com/in/soufiane-lamrissi-15b79261/>
+- <https://twitter.com/Wriri>
 
 **Emily Reese**, content designer
 

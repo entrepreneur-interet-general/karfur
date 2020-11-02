@@ -17,7 +17,7 @@ var indicatorSchema = mongoose.Schema(
     userId: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
-      rrequired: true
+      required: true
     },
     timeSpent: {
       type: Number,

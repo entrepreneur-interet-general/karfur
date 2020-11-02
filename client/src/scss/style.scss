@@ -15,9 +15,33 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+// @font-face {
+//   font-family: "CircularStdMedium";
+//   src: local("CircularStdMedium"),
+//     url(./fonts/CircularStd/CircularStd-Medium.WOFF) format("woff");
+// }
+
+// @font-face {
+//   font-family: "CircularStdBlack";
+//   src: local("CircularStdBlack"),
+//     url(./fonts/CircularStd/CircularStd-Black.WOFF) format("woff");
+// }
+
+// @font-face {
+//   font-family: "CircularStdBold";
+//   src: local("CircularStdBold"),
+//     url(./fonts/CircularStd/CircularStd-Bold.WOFF) format("woff");
+// }
+
+// @font-face {
+//   font-family: "CircularStdBook";
+//   src: local("CircularStdBook"),
+//     url(./fonts/CircularStd/CircularStd-Book.WOFF) format("woff");
+// }
+
 // custom fonts
 html,
 body,
 #root {
-  font-family: "Roboto", "Noto Sans";
+  font-family: "CircularStdBook", "CircularStdMedium", "Roboto", "Noto Sans";
 }

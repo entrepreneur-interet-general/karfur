@@ -3,6 +3,7 @@ const Role = require("../../schema/schemaRole.js");
 const User = require("../../schema/schemaUser.js");
 const Traduction = require("../../schema/schemaTraduction");
 const Structure = require("../../schema/schemaStructure.js");
+const Error = require("../../schema/schemaError");
 var uniqid = require("uniqid");
 const {
   addOrUpdateDispositifInContenusAirtable,
@@ -124,12 +125,22 @@ async function add_dispositif(req, res) {
               });
               /*   now we compare the old french version of the dispositif with new updated one,
            and for every change we mark the paragraph/title/etc. within the translation so that we can propose it and highlight it in the 'à revoir' section  */
+              try {
               tradExpert = markTradModifications(
                 dispositif,
                 // eslint-disable-next-line no-undef
                 dispositifFr,
-                tradExpert
+                tradExpert,
+                req.userId,
               );
+              } catch (e) {
+                new Error({
+                  name: "markTradModifications",
+                  userId: req.userId,
+                  dataObject: req.body,
+                  error: e,
+                }).save();
+              }
               // we update the percentage of the translation done after the modified fields if status is 'À revoir' (so the original version in french as been modified)
               if (tradExpert.status === "À revoir") {
                 const contentsTotal = countContents(dispositif.contenu) + 3 - 4;

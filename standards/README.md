@@ -9,10 +9,10 @@ For typing, we use **typescript** on client and server.
 We use 3 branches :
 
 - dev for development
-- qa for our test environement
-- master for prod
+- staging-frontend and staging-backend for staging
+- master-frontend and master-backend for production
 
-All commits in prod and qa should be in dev.
+All commits in staging's and master's branches should be in dev.
 
 Before opening a pull request, please run in client and server folders : `npm run test:lint`, `npm run test:types`, `npm run test:unit`
 
@@ -43,7 +43,7 @@ Before opening a pull request, please run in client and server folders : `npm ru
 
 ### Server
 
-- use `console.log()``
+- use `logger.info()`, `logger.warn()`or `logger.error()`
 - add context to the log, function name for example
 
 ## How to document code ?
@@ -53,12 +53,13 @@ Before opening a pull request, please run in client and server folders : `npm ru
 
 ## How to write good css ?
 
-The project is currently mainly coded with scss styling, but we are more and more transitioning toward a styled-components logic that better reflect and takes advantage of the structure and composing abilities of the React framework. By keeping the style logic within each component, we avoid common pitfalls such as difficult readability and conflicting class names. 
+The project is currently mainly coded with scss styling, but we are more and more transitioning toward a styled-components logic that better reflect and takes advantage of the structure and composing abilities of the React framework. By keeping the style logic within each component, we avoid common pitfalls such as difficult readability and conflicting class names.
 styled-components allows you to write actual CSS inside your JavaScript, enabling you to use the full power of CSS 💪 without mapping between styles and components. There are many ways to style react applications, but many find styled-components to be a more natural approach to styling components.
 
 styled-components
 
 Below creates two styled react components (Title, Wrapper) and renders them as children of the Header component:
+
 ```
 import React from 'react';
 import styled from 'styled-components';
@@ -73,6 +74,7 @@ const Title = styled.h1`
 ```
 
 Create a <Wrapper> react component that renders a section with some padding and a papayawhip background
+
 ```
 const Wrapper = styled.section`
   padding: 4em;
@@ -81,6 +83,7 @@ const Wrapper = styled.section`
 ```
 
 Use them like any other React component – except they're styled!
+
 ```
 function Button() {
   return (
@@ -94,5 +97,5 @@ function Button() {
 }
 ```
 
-You can see an example of  a  simple static component in /karfur/client/src/components/Frontend/Dispositif/MediaUpload/StyledTab.js
+You can see an example of a simple static component in /karfur/client/src/components/Frontend/Dispositif/MediaUpload/StyledTab.js
 Or an example of a styled-component declared within a much complex component in /karfur/client/src/containers/Dispositif/SideTrad/ExpertSideTrad.js

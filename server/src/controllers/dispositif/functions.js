@@ -2,6 +2,7 @@ const himalaya = require("himalaya");
 const sanitizeHtml = require("sanitize-html");
 const { sanitizeOptions } = require("../article/data");
 const _ = require("lodash");
+const Error = require("../../schema/schemaError");
 const logger = require("../../logger");
 
 const pointeurs = ["titreInformatif", "titreMarque", "abstract"];
@@ -10,127 +11,181 @@ const pointeurs = ["titreInformatif", "titreMarque", "abstract"];
 by comparing the old french text (oldD) with new one (newD) and then for validated translation (trad) we mark the modified section
 and if one of the sections is changed we change the status to "À revoir"*/
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const markTradModifications = (newD, oldD, trad, locale) => {
+const markTradModifications = (newD, oldD, trad, userId) => {
   logger.info("[markTradModifications] dispositif ", {
     id: oldD._id,
   });
   //We mark the titreInformatif, Marque, and Abstract
   pointeurs.forEach((x) => {
-    if (JSON.stringify(oldD[x]) !== JSON.stringify(newD[x])) {
-      logger.info("[markTradModifications] pointeur was modified", {
-        id: oldD._id,
-        pointeur: x,
-      });
-      trad.translatedText[x + "Modified"] = true;
-      trad.status = "À revoir";
+    try {
+      if (JSON.stringify(oldD[x]) !== JSON.stringify(newD[x])) {
+        logger.info("[markTradModifications] pointeur was modified", {
+          id: oldD._id,
+          pointeur: x,
+        });
+        trad.translatedText[x + "Modified"] = true;
+        trad.status = "À revoir";
+      }
+    } catch (e) {
+      new Error({
+        name: "markTradModifications",
+        userId: userId,
+        dataObject: {
+          element: x,
+          newD,
+          oldD,
+          trad,
+        },
+        error: e,
+      }).save();
     }
   });
   oldD.contenu.forEach((p, index) => {
-    //we mark the titles of the content sections
-    if (JSON.stringify(p.title) !== JSON.stringify(newD.contenu[index].title)) {
-      logger.info("[markTradModifications] title content was modified", {
-        id: oldD._id,
-        title: p.title,
-      });
-      trad.translatedText.contenu[index].titleModified = true;
-      trad.status = "À revoir";
-    }
-    //we mark the content in the 4 content sections
-    if (
-      JSON.stringify(p.content) !== JSON.stringify(newD.contenu[index].content)
-    ) {
-      logger.info("[markTradModifications] content was modified", {
-        id: oldD._id,
-        content: p.content,
-      });
-      trad.translatedText.contenu[index].contentModified = true;
-      trad.status = "À revoir";
-    }
-
-    if (
-      p.children !== newD.contenu[index].children ||
-      (p.children && p.children.length !== newD.contenu[index].children.length)
-    ) {
-      logger.info("[markTradModifications] children was modified", {
-        id: oldD._id,
-      });
-      trad.status = "À revoir";
-    }
-
-    //we mark the title and content for every child of each section
-    if (p.children && p.children.length > 0) {
-      logger.info(
-        "[markTradModifications] since children was modified, mark content of children",
-        {
+    try {
+      //we mark the titles of the content sections
+      if (
+        JSON.stringify(p.title) !== JSON.stringify(newD.contenu[index].title)
+      ) {
+        logger.info("[markTradModifications] title content was modified", {
           id: oldD._id,
-          children: p.children,
-        }
-      );
-      p.children.forEach((c, j) => {
-        if (!newD.contenu[index].children) {
-          logger.info("[markTradModifications] children was removed", {
+          title: p.title,
+        });
+        trad.translatedText.contenu[index].titleModified = true;
+        trad.status = "À revoir";
+      }
+      //we mark the content in the 4 content sections
+      if (
+        JSON.stringify(p.content) !==
+        JSON.stringify(newD.contenu[index].content)
+      ) {
+        logger.info("[markTradModifications] content was modified", {
+          id: oldD._id,
+          content: p.content,
+        });
+        trad.translatedText.contenu[index].contentModified = true;
+        trad.status = "À revoir";
+      }
+
+      if (
+        p.children !== newD.contenu[index].children ||
+        (p.children &&
+          p.children.length !== newD.contenu[index].children.length)
+      ) {
+        logger.info("[markTradModifications] children was modified", {
+          id: oldD._id,
+        });
+        trad.status = "À revoir";
+      }
+
+      //we mark the title and content for every child of each section
+      if (p.children && p.children.length > 0) {
+        logger.info(
+          "[markTradModifications] since children was modified, mark content of children",
+          {
             id: oldD._id,
-          });
-          delete trad.translatedText.contenu[index].children;
-          trad.status = "À revoir";
-        } else if (
-          !newD.contenu[index].children[j] &&
-          trad.translatedText.contenu[index] &&
-          trad.translatedText.contenu[index].children
-        ) {
-          logger.info(
-            "[markTradModifications] content of children was removed",
-            {
-              id: oldD._id,
-            }
-          );
-          trad.translatedText.contenu[index].children.splice(j, 1);
-          trad.status = "À revoir";
-        } else {
-          if (
-            JSON.stringify(c.title) !==
-              JSON.stringify(newD.contenu[index].children[j].title) &&
-            trad.translatedText.contenu[index] &&
-            trad.translatedText.contenu[index].children
-          ) {
-            logger.info(
-              "[markTradModifications] title of children was modified",
-              {
+            children: p.children,
+          }
+        );
+        p.children.forEach((c, j) => {
+          try {
+            if (!newD.contenu[index].children) {
+              logger.info("[markTradModifications] children was removed", {
                 id: oldD._id,
+              });
+              delete trad.translatedText.contenu[index].children;
+              trad.status = "À revoir";
+            } else if (
+              !newD.contenu[index].children[j] &&
+              trad.translatedText.contenu[index] &&
+              trad.translatedText.contenu[index].children
+            ) {
+              logger.info(
+                "[markTradModifications] content of children was removed",
+                {
+                  id: oldD._id,
+                }
+              );
+              trad.translatedText.contenu[index].children.splice(j, 1);
+              trad.status = "À revoir";
+            } else {
+              if (
+                JSON.stringify(c.title) !==
+                  JSON.stringify(newD.contenu[index].children[j].title) &&
+                trad.translatedText.contenu[index] &&
+                trad.translatedText.contenu[index].children
+              ) {
+                logger.info(
+                  "[markTradModifications] title of children was modified",
+                  {
+                    id: oldD._id,
+                  }
+                );
+                trad.translatedText.contenu[index].children[
+                  j
+                ].titleModified = true;
+                trad.status = "À revoir";
               }
-            );
-            trad.translatedText.contenu[index].children[j].titleModified = true;
-            trad.status = "À revoir";
-          }
 
-          if (
-            c.type !== "card" &&
-            newD.contenu[index].children[j] &&
-            trad.translatedText.contenu[index] &&
-            JSON.stringify(c.content) !==
-              JSON.stringify(newD.contenu[index].children[j].content)
-          ) {
-            trad.translatedText.contenu[index].children[
-              j
-            ].contentModified = true;
-            trad.status = "À revoir";
-          }
+              if (
+                c.type !== "card" &&
+                newD.contenu[index].children[j] &&
+                trad.translatedText.contenu[index] &&
+                JSON.stringify(c.content) !==
+                  JSON.stringify(newD.contenu[index].children[j].content)
+              ) {
+                trad.translatedText.contenu[index].children[
+                  j
+                ].contentModified = true;
+                trad.status = "À revoir";
+              }
 
-          //we mark the infocards (contentTitle)
-          if (
-            newD.contenu[index].children[j] &&
-            JSON.stringify(c.contentTitle) !==
-              JSON.stringify(newD.contenu[index].children[j].contentTitle) &&
-            trad.translatedText.contenu[index] &&
-            trad.translatedText.contenu[index].children
-          ) {
-            trad.translatedText.contenu[index].children[
-              j
-            ].contentTitleModified = true;
-            trad.status = "À revoir";
+              //we mark the infocards (contentTitle)
+              if (
+                newD.contenu[index].children[j] &&
+                JSON.stringify(c.contentTitle) !==
+                  JSON.stringify(
+                    newD.contenu[index].children[j].contentTitle
+                  ) &&
+                trad.translatedText.contenu[index] &&
+                trad.translatedText.contenu[index].children
+              ) {
+                trad.translatedText.contenu[index].children[
+                  j
+                ].contentTitleModified = true;
+                trad.status = "À revoir";
+              }
+            }
+          } catch (e) {
+            new Error({
+              name: "markTradModifications",
+              userId: userId,
+              dataObject: {
+                element: p,
+                index,
+                subElement: c,
+                subIndex: j,
+                newD,
+                oldD,
+                trad,
+              },
+              error: e,
+            }).save();
           }
-        }
-      });
+        });
+      }
+    } catch (e) {
+      new Error({
+        name: "markTradModifications",
+        userId: userId,
+        dataObject: {
+          element: p,
+          index,
+          newD,
+          oldD,
+          trad,
+        },
+        error: e,
+      }).save();
     }
   });
   return trad;

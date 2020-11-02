@@ -914,6 +914,7 @@ export class Avancement extends Component {
           >
             {"À traduire (" + this.state.toTranslateCount + ")"}
           </StyledStatus>
+          {isExpert ? (
           <StyledStatus
             onClick={this.reorderOnTopReview}
             className={
@@ -923,6 +924,7 @@ export class Avancement extends Component {
           >
             {"À revoir (" + this.state.reviewCount + ")"}
           </StyledStatus>
+          ) : null}
           {isExpert ? (
             <StyledStatus
               onClick={this.reorderOnTopWaiting}

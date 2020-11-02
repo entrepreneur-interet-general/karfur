@@ -267,8 +267,8 @@ export class TranslationHOC extends Component {
         // eslint-disable-next-line no-console
         console.log("error : ", err);
         if (
-          !this.state.translated[item] &&
-          h2p(this.state.francais[item]) === h2p(text)
+          !this.state.translated[item]
+          //h2p(this.state.francais[item]) === h2p(text)
         ) {
           let value = this.state.francais[item] || "";
           value = toEditor
