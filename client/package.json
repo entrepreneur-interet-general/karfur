@@ -28,7 +28,7 @@
     "i18next": "^14.0.1",
     "i18next-browser-languagedetector": "^2.2.4",
     "i18next-xhr-backend": "^1.5.1",
-    "immer": "^5.3.6",
+    "immer": "^8.0.1",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
     "lodash.debounce": "^4.0.8",
