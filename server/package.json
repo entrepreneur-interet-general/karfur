@@ -39,7 +39,7 @@
     "nodemailer": "^6.3.0",
     "password-hash": "^1.2.2",
     "request-promise": "^4.2.4",
-    "sanitize-html": "^1.20.0",
+    "sanitize-html": "^2.3.2",
     "ts-node": "^8.10.2",
     "twilio": "^3.37.1",
     "typescript": "^3.9.5",
